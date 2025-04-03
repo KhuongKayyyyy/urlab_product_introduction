@@ -1,70 +1,13 @@
 import SearchForm from "../../components/SearchForm";
-import StartupCard from "../../components/StartupCard";
+import StartupCard, { StartupTypeCard } from "../../components/StartupCard";
+import { STARTUP_QUERY } from "@/sanity/lib/query";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 export default async function Home({ searchParams }: { searchParams: { query?: string } }) {
 
   const query = (await searchParams).query;
-
-  const posts = [{
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  },
-  {
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  },
-  {
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  },
-  {
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  },
-  {
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  },
-  {
-    _id: "1",
-    _createdAt: new Date(),
-    views: 100,
-    author: {_id: "1", name: "UR Lab"},
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.",
-    image :"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRG1Q9B92H2y-UtN5gS-CCVop0JSG14NpdQg&s",
-    category: "UAV",
-    title: "Drone",
-  }
-]
+  const params = {search :query || null};
+  const {data:posts} = await sanityFetch({query :STARTUP_QUERY,params});
+  console.log(JSON.stringify(posts, null, 2));
   return (
    <>
    <section className="pink_container --primary">
@@ -78,7 +21,7 @@ export default async function Home({ searchParams }: { searchParams: { query?: s
       {query ? `Search results for "${query}"` : "All products"}  
     </p>
     <ul className = "mt-7 card_grid">
-      {posts?.length ? posts.map((post, index) => (
+      {posts?.length ? posts.map((post: StartupTypeCard) => (
         <StartupCard 
         key = {post?._id}
         post = {post}
@@ -92,6 +35,8 @@ export default async function Home({ searchParams }: { searchParams: { query?: s
     )) : <p>No posts found.</p>}
     </ul>
    </section>
+
+   <SanityLive></SanityLive>
    </>
   );
 }
