@@ -10,7 +10,7 @@ export const author = defineType({
         {
             name: "id",
             title: "Id",
-            type: "string",
+            type: "number",
             },
         {
         name: "name",
@@ -18,7 +18,7 @@ export const author = defineType({
         type: "string",
         },
         {
-            name: "usename",
+            name: "username",
             title: "Username",
             type: "string",
             },

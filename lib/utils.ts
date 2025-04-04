@@ -11,3 +11,7 @@ export function formatDate(date: string) {
     day: "numeric",
   })
 }
+
+export function formatView(viewCount: number) {
+  return `${viewCount} view${viewCount === 1 ? "" : "s"}`;
+}
