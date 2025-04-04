@@ -34,6 +34,77 @@
 }
 
 @layer components {
+    /* Form Container */
+.startup-form {
+    max-width: 32rem; /* equivalent to max-w-2xl */
+    margin: 2.5rem auto; /* equivalent to my-10 */
+    background-color: white;
+    padding: 1.5rem; /* equivalent to px-6 */
+    space-y: 2rem; /* equivalent to space-y-8 */
+}
+
+/* Label Styling */
+.startup-form_label {
+    font-family: var(--font-work-sans); 
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    text-transform: uppercase;
+}
+
+/* Input Styling */
+.startup-form_input {
+    width: 100%;
+    font-family: var(--font-work-sans); /* Assuming you have a global font variable */
+    border: 3px solid black;
+    padding: 1.75rem 1.25rem; /* equivalent to px-5 py-7 */
+    font-size: 18px;
+    color: black;
+    font-weight: 600; /* equivalent to font-semibold */
+    border-radius: 9999px; /* equivalent to rounded-full */
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+}
+.startup-form_textarea {
+    border: 3px solid black;
+    padding: 1.25rem;
+    font-size: 18px;
+    color: black;
+    font-weight: 600; /* equivalent to font-semibold */
+    border-radius: 20px; /* rounded-[20px] */
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+    placeholder-color: rgba(0, 0, 0, 0.3); /* placeholder:text-black-300 */
+}
+
+/* Error Message Styling */
+.startup-form_error {
+    color: red;
+    margin-top: 0.5rem; /* equivalent to mt-2 */
+    margin-left: 1.25rem; /* equivalent to ml-5 */
+}
+
+/* Editor Styling */
+.startup-form_editor {
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+    border: 3px solid black;
+    font-size: 18px;
+    color: black;
+    font-weight: 600; /* equivalent to font-semibold */
+    placeholder-color: rgba(0, 0, 0, 0.3); /* placeholder:text-black-300 */
+}
+
+/* Button Styling */
+.startup-form_btn {
+    background-color: var(--primary-color); /* Replace with your primary color */
+    border: 4px solid black;
+    border-radius: 9999px; /* rounded-full */
+    padding: 1.25rem;
+    min-height: 4.375rem; /* equivalent to min-h-[70px] */
+    width: 100%;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
 
     .bg-primary{
         background-color: var(--primary) !important;
@@ -562,7 +633,8 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: #EE2B69;
+  --primary-100: #FFE8F0;
   --primary-foreground: oklch(0.984 0.003 247.858);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);

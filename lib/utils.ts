@@ -15,3 +15,7 @@ export function formatDate(date: string) {
 export function formatView(viewCount: number) {
   return `${viewCount} view${viewCount === 1 ? "" : "s"}`;
 }
+
+export function parseServerActionReponse<T>(response: T){
+  return JSON.parse(JSON.stringify(response)); 
+}
